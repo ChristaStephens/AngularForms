@@ -10,11 +10,20 @@ export class AppComponent {
   rForm: FormGroup;
   post: any;    // A property for our submitted form
   description: string = '';
-  // name: string = '';
+  name: string = '';
 
-  name ='Christa';
+  // name ='Christa';
 
-  updateName() {
-    this.name = 'Stephens'
-  }
+  // updateName() {
+  //   this.name = 'Stephens'
+  // }
+
+  //specify form validation. 'r' is related it reactive forms
+  constructor (private fb: FormBuilder) {
+    this.rForm =fb.group({
+      //has two values 'form value and validation'
+      'name': [null, Validators.required],
+      'description': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
+    });
+   }
 }
