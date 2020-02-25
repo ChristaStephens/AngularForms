@@ -12,6 +12,7 @@ export class AppComponent {
   post: any;    // A property for our submitted form
   description: string = '';
   name: string = '';
+  titleAlert: string = 'This field is required';
 
   // name ='Christa';
 
@@ -27,6 +28,10 @@ export class AppComponent {
       'description': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
       'validate': ''
     });
+   }
+
+   ngOnInit() {
+
    }
 
    //handling the submitted form - add post

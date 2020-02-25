@@ -20,9 +20,13 @@
       <input type="text" formControlName="name">
       </label>
 
+      <!-- If form is not valid and is touched, give this alert -->
+      <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched"> {{titleAlert}}</div>
+
       <label> description
         <textarea formControlName="description"></textarea>
         </label>
+          <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">30 characters min and 500 max</div>
 
         <label for="validate">Minimum of 3 Characters</label>
         <input type="checkbox" name="validate" formControlName="validate" value="1">On
