@@ -12,6 +12,7 @@ export class AppComponent {
   post: any;    // A property for our submitted form
   description: string = '';
   name: string = '';
+  titleAlert: string = 'This field is required';
 
   // name ='Christa';
 
@@ -28,6 +29,24 @@ export class AppComponent {
       'validate': ''
     });
    }
+
+   // When it loads, what's written within here is ran
+   //redifining the validators by name from the variables above
+   ngOnInit() {
+    this.rForm.get('validate').valueChanges.subscribe(
+
+      (validate) => {
+
+          if (validate == '1') {
+              this.rForm.get('name').setValidators([Validators.required, Validators.minLength(3)]);
+              this.titleAlert = 'You need to specify at least 3 characters';
+          } else {
+              this.rForm.get('name').setValidators(Validators.required);
+          }
+          this.rForm.get('name').updateValueAndValidity();
+
+      });
+  }
 
    //handling the submitted form - add post
    addPost(post) {
