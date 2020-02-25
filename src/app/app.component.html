@@ -14,6 +14,8 @@
 
       <h1>My Reactive Form</h1>
 
+      <!-- formControlName relates to the vars defined in the constructor -->
+      <!-- label is the name of the dom element -->
       <label> Name
       <input type="text" formControlName="name">
       </label>
@@ -25,6 +27,8 @@
         <label for="validate">Minimum of 3 Characters</label>
         <input type="checkbox" name="validate" formControlName="validate" value="1">On
 
+        <!-- this submit button is disabled if the form is not valid -->
+        <input type="submit" class="button expanded" value="Submit Form" [disabled]="!rForm.valid">
     </div>
   </div>
 </form>
