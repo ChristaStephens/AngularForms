@@ -4,8 +4,23 @@
 
 <h1>{{ title }}</h1>
 
+<!-- if you submit the form it will show the info below and not what's above -->
 <div *ngIf="!name; else forminfo">
+  <!-- when you use reactive forms you have to wrap it in a form bracket and
+    bind it to a property (which is rForm, that we created in .ts) -->
+<form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+  <div class="form-container">
+    <div class="row columns">
 
+      <h1>My Reactive Form</h1>
+
+      <label> Name
+      <input type="text" formControlName="name">
+      </label>
+
+    </div>
+  </div>
+</form>
 </div>
 
 <ng-template #forminfo>
